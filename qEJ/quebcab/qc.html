@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saligia & Tenebris Ordo: O Cisma dos Sete Selos - Puzzle RPG de Escolhas Morais</title>
+
+    <meta name="description" content="Um Puzzle RPG onde suas escolhas definem o equilíbrio entre a Ordem Saligia (Virtude) e a Tenebris Ordo (Vontade) através dos Sete Pecados Capitais.">
+    <meta name="keywords" content="RPG, Puzzle, 7 Pecados, Saligia, Tenebris Ordo, Enigma, Escolhas, Fantasia, Moral">
+    <meta name="author" content="O Guardião do Equilíbrio">
+
+    <meta property="og:title" content="Saligia & Tenebris Ordo: O Cisma dos Sete Selos">
+    <meta property="og:description" content="Decifre os enigmas dos Sete Pecados e escolha o destino de Aethelum.">
+    <meta property="og:type" content="game">
+    
+    <link rel="preload" href="qc.css" as="style">
+    <link rel="preload" href="assets/fonts/Cinzel.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <link rel="stylesheet" href="qc.css">
+    <style>
+        body { 
+            font-family: "Georgia", "Cinzel", serif; 
+            background-color: #1a150e; 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container" role="main" aria-label="Área Principal do Jogo Saligia e Tenebris Ordo">
+
+        <div id="intro-screen" class="game-screen active" role="region" aria-label="Introdução e Lore do Jogo">
+            <div class="pergaminho-content">
+                <h1 class="title">O Cisma dos Sete Selos</h1>
+                <h2 class="subtitle">Saligia & Tenebris Ordo</h2>
+                <div class="divider"></div>
+                <p>O mundo de Aethelum jaz sob a sombra de dois poderes ancestrais: a **Saligia**, a Ordem da Virtude e da Disciplina, e a **Tenebris Ordo**, a Confraria da Vontade e da Libertação. Séculos atrás, no Grande Cisma, sete portais foram selados, cada um aprisionando a essência de um **Pecado Capital**.</p>
+                <p>Seu papel, **Guardião do Equilíbrio**, é peregrinar pelos Sete Portais. Suas escolhas e sua lógica determinarão se Aethelum cai na libertinagem ou se ascende à disciplina.</p>
+                <p class="pecados-list">Decifre 7 Pecados: Luxúria, Gula, Avareza, Preguiça, Ira, Inveja, Soberba.</p>
+                <div class="divider"></div>
+                <button id="start-game-btn" class="rpg-btn large pulsating" aria-label="Iniciar a Jornada do Guardião">Iniciar Jornada</button>
+            </div>
+            <div class="logo-faccao saligia" title="Símbolo Saligia: Virtude e Disciplina"></div>
+            <div class="logo-faccao tenebris" title="Símbolo Tenebris Ordo: Vontade e Libertação"></div>
+        </div>
+
+        <div id="main-menu" class="game-screen hidden" role="navigation" aria-label="Menu Principal e Seleção de Fases">
+            <h1 class="title">O Pergaminho dos Pecados</h1>
+            <div id="faction-scale" title="Balança de Alinhamento">
+                <div id="scale-saligia-fill" class="scale-fill saligia-align"></div>
+                <div id="scale-tenebris-fill" class="scale-fill tenebris-align"></div>
+                <span id="scale-indicator" title="Alinhamento Atual">⚖️</span>
+            </div>
+
+            <div id="phase-list" role="list" aria-label="Lista de Portais dos Pecados">
+                </div>
+
+            <div class="menu-options">
+                <button id="character-btn" class="rpg-btn small" title="Ver Ficha de Personagem e Status" onclick="document.getElementById('character-modal').classList.remove('hidden')">Status (Ficha)</button>
+                <button id="lore-btn" class="rpg-btn small" title="Conhecer a história de Aethelum" onclick="document.getElementById('codex-modal').classList.remove('hidden')">Codex de Aethelum</button>
+                <button id="rules-btn" class="rpg-btn small" title="Como jogar e as regras do Cisma" onclick="document.getElementById('rules-modal').classList.remove('hidden')">Regras & Ajuda</button>
+                <button id="achievements-btn" class="rpg-btn small" title="Ver Conquistas Desbloqueadas" onclick="document.getElementById('achievements-modal').classList.remove('hidden')">Conquistas ⭐</button>
+                <button id="options-btn" class="rpg-btn small" title="Ajustar Configurações" onclick="document.getElementById('options-modal').classList.remove('hidden')">Configurações</button>
+                
+                <button id="reset-progress-btn" class="rpg-btn small warning">Reiniciar Jogo</button>
+                <button id="toggle-sound-btn" class="rpg-btn small sound-on" aria-live="polite">Som: LIGADO</button>
+                <button id="exit-app-btn" class="rpg-btn small exit-btn" title="Sair do Jogo">Sair</button>
+            </div>
+        </div>
+
+        <div id="game-screen" class="game-screen hidden" role="region" aria-label="Tela de Jogo com Puzzle e HUD">
+            
+            <header id="hud" role="status">
+                <div class="hud-panel left-panel">
+                    <div class="stat-box score" title="Fragmentos de Alinhamento">
+                        <span class="icon" aria-hidden="true">💎</span>
+                        <span id="score-display">0</span>
+                    </div>
+                    <div class="stat-box attempts" title="Tentativas Restantes (Vidas)">
+                        <span class="icon" aria-hidden="true">♥️</span>
+                        <span id="attempts-display">3</span>
+                    </div>
+                    <div class="stat-box timer" title="Tempo Transcorrido">
+                        <span class="icon" aria-hidden="true">⏳</span>
+                        <span id="timer-display">00:00</span>
+                    </div>
+                </div>
+
+                <div class="hud-panel center-panel">
+                    <h2 id="current-phase-title" class="rpg-title-phase">Luxúria: O Portal da Tentação</h2>
+                    <h3 id="current-mode-title" class="rpg-title-mode">Modo: Saligia (Virtude)</h3>
+                </div>
+
+                <div class="hud-panel right-panel">
+                    <div id="faction-status" class="faction-icon saligia-small" title="Status da Facção Atual"></div> 
+                    
+                    <button id="pause-btn" class="rpg-btn small pause-btn" title="Menu de Pausa/Sistema" onclick="document.getElementById('pause-modal').classList.remove('hidden')">❚❚</button>
+                    
+                    <button id="hint-btn" class="rpg-btn small hint-btn" title="Usar Dica (Custa 50 Fragmentos)">Dica (50)</button>
+                    <button id="inventory-btn" class="rpg-btn small" title="Inventário do Guardião" onclick="document.getElementById('inventory-modal').classList.remove('hidden')">🎒</button>
+                </div>
+            </header>
+            
+            <div id="progress-bar-container" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso da Fase Atual">
+                <div id="progress-bar-fill"></div>
+            </div>
+
+            <div id="dialogue-area" class="rpg-dialogue-box hidden" role="alert" aria-live="assertive">
+                <span id="npc-name" class="npc-name">Emissário da Tenebris:</span>
+                <p id="dialogue-text">"A disciplina é uma gaiola dourada. A verdadeira força reside na liberdade irrestrita da Vontade."</p>
+                <button id="next-dialogue-btn" class="rpg-btn small">Avançar ▶</button>
+            </div>
+
+            <div id="puzzle-area" class="rpg-puzzle-box" role="form">
+                </div>
+
+            <div id="choice-area" class="rpg-choice-box hidden" role="group" aria-label="Escolha de Alinhamento">
+                <p class="choice-prompt">Você sela o Portal com a virtude ou liberta a essência do Pecado?</p>
+                <button class="rpg-btn choice-saligia" data-choice="saligia">Selo da Virtude (Saligia)</button>
+                <button class="rpg-btn choice-tenebris" data-choice="tenebris">Ato da Vontade (Tenebris)</button>
+            </div>
+
+
+            <div id="feedback-modal" class="rpg-modal hidden" role="dialog" aria-modal="true" aria-labelledby="feedback-title">
+                <div class="modal-content">
+                    <h2 id="feedback-title" class="rpg-modal-title"></h2>
+                    <p id="feedback-text"></p>
+                    <button class="rpg-btn" onclick="gameState.hideFeedback()">Continuar</button>
+                </div>
+            </div>
+
+            <div id="inventory-modal" class="rpg-modal hidden" role="dialog" aria-modal="true" aria-labelledby="inventory-modal-title">
+                <div class="modal-content">
+                    <h2 id="inventory-modal-title">Inventário do Guardião</h2>
+                    <div id="inventory-list" role="list">
+                        </div>
+                    <button class="rpg-btn small" onclick="document.getElementById('inventory-modal').classList.add('hidden')">Fechar</button>
+                </div>
+            </div>
+            
+            <div id="victory-modal" class="rpg-modal hidden victory-screen" role="dialog" aria-modal="true" aria-labelledby="victory-title">
+                <div class="modal-content">
+                    <h2 id="victory-title" class="victory-title">Fase Concluída!</h2>
+                    <p id="victory-message" class="rpg-message-result"></p>
+                    <p class="educational-note" id="educational-note"></p>
+                    <button id="next-mode-btn" class="rpg-btn large" aria-label="Prosseguir para o próximo modo do Pecado">Próximo Modo</button>
+                    <button id="back-to-menu-btn" class="rpg-btn small">Voltar ao Menu</button>
+                </div>
+            </div>
+
+            <div id="pause-modal" class="rpg-modal hidden pause-menu" role="dialog" aria-modal="true" aria-labelledby="pause-menu-title">
+                <div class="modal-content">
+                    <h2 id="pause-menu-title" class="rpg-modal-title">Menu do Sistema</h2>
+                    <div class="menu-options vertical">
+                        <button class="rpg-btn large" onclick="document.getElementById('pause-modal').classList.add('hidden')">Voltar ao Jogo</button>
+                        
+                        <button class="rpg-btn large">Salvar Progresso</button>
+                        <button id="back-to-main-menu-btn" class="rpg-btn large warning">Voltar ao Menu Principal</button>
+                        
+                        <button class="rpg-btn large" onclick="document.getElementById('character-modal').classList.remove('hidden'); document.getElementById('pause-modal').classList.add('hidden')">Ficha do Guardião</button>
+                        <button class="rpg-btn large" onclick="document.getElementById('codex-modal').classList.remove('hidden'); document.getElementById('pause-modal').classList.add('hidden')">Codex (Lore)</button>
+                        <button class="rpg-btn large" onclick="document.getElementById('options-modal').classList.remove('hidden'); document.getElementById('pause-modal').classList.add('hidden')">Configurações</button>
+                        
+                        <button id="quit-game-btn" class="rpg-btn large exit-btn">Sair do Jogo</button>
+                    </div>
+                </div>
+            </div>
+
+        </div> <div id="character-modal" class="rpg-modal hidden character-sheet" role="dialog" aria-modal="true" aria-labelledby="character-sheet-title">
+            <div class="modal-content">
+                <h2 id="character-sheet-title" class="sheet-title">Ficha do Guardião</h2>
+                <div class="character-portrait">
+                    <img src="assets/guardian_portrait.png" alt="Retrato do Guardião">
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item"><strong>Nível de Peregrinação:</strong> <span id="char-level">1</span></div>
+                    <div class="stat-item"><strong>Título:</strong> <span id="char-title">Novato do Cisma</span></div>
+                    <div class="stat-item"><strong>Alinhamento:</strong> <span id="char-alignment" class="saligia-align">Neutro/Equilíbrio</span></div>
+                    <div class="stat-item"><strong>Virtudes Ativadas:</strong> <span id="char-virtues">0/7</span></div>
+                    <div class="stat-item"><strong>Pecados Libertados:</strong> <span id="char-sins">0/7</span></div>
+                </div>
+                <div class="divider"></div>
+                <h3>Alinhamento e Reputação</h3>
+                <div id="reputation-bar">
+                    <div id="reputation-saligia" class="rep-bar-fill">Saligia (0%)</div>
+                    <div id="reputation-tenebris" class="rep-bar-fill">Tenebris (0%)</div>
+                </div>
+                <div class="divider"></div>
+                <button class="rpg-btn small" onclick="document.getElementById('character-modal').classList.add('hidden')">Fechar Ficha</button>
+            </div>
+        </div>
+        
+        <div id="options-modal" class="rpg-modal hidden" role="dialog" aria-modal="true" aria-labelledby="options-title">
+            <div class="modal-content">
+                <h2 id="options-title">Configurações do Ordo</h2>
+                <div class="option-group">
+                    <h4>Áudio</h4>
+                    <label>Volume da Música: <input type="range" id="music-volume" min="0" max="100" value="50"></label>
+                    <label>Volume dos Efeitos: <input type="range" id="sfx-volume" min="0" max="100" value="75"></label>
+                </div>
+                <div class="option-group">
+                    <h4>Gráficos e Performance</h4>
+                    <label>Qualidade de Textura: 
+                        <select id="texture-quality">
+                            <option value="high">Alta (Recomendado)</option>
+                            <option value="medium">Média</option>
+                            <option value="low">Baixa (Modo Performance)</option>
+                        </select>
+                    </label>
+                    <label><input type="checkbox" id="disable-effects"> Desativar Efeitos Visuais</label>
+                </div>
+                <div class="option-group">
+                    <h4>Acessibilidade</h4>
+                    <label><input type="checkbox" id="high-contrast"> Modo de Alto Contraste</label>
+                    <label>Tamanho do Texto: 
+                        <select id="text-size">
+                            <option value="medium">Padrão</option>
+                            <option value="large">Grande</option>
+                        </select>
+                    </label>
+                </div>
+                <button class="rpg-btn small" onclick="document.getElementById('options-modal').classList.add('hidden')">Salvar e Fechar</button>
+            </div>
+        </div>
+
+        <div id="codex-modal" class="rpg-modal hidden codex-sheet" role="dialog" aria-modal="true" aria-labelledby="codex-title">
+            <div class="modal-content pergaminho-content">
+                <h2 id="codex-title" class="rpg-modal-title">Codex de Aethelum</h2>
+                <div class="codex-tabs">
+                    <button class="rpg-btn small active" data-tab="lore">História do Cisma</button>
+                    <button class="rpg-btn small" data-tab="factions">Facções</button>
+                    <button class="rpg-btn small" data-tab="sins">Os Sete Pecados</button>
+                    <button class="rpg-btn small" data-tab="npcs">Personagens</button>
+                </div>
+                
+                <div id="codex-content">
+                    <div id="codex-lore" class="codex-page active">
+                        <h3>A Gênese de Aethelum</h3>
+                        <p>O mundo foi moldado pela Vontade e pela Lei. O Cisma ocorreu quando as Sete Essências se tornaram muito poderosas para serem contidas...</p>
+                    </div>
+                    <div id="codex-factions" class="codex-page hidden">
+                        <h3>Saligia (Virtude)</h3>
+                        <p>Fiel à Lei, busca a ordem através da negação dos impulsos. Cor da Facção: Dourado e Branco.</p>
+                        <h3>Tenebris Ordo (Vontade)</h3>
+                        <p>Prega a força da individualidade e a liberdade absoluta. Cor da Facção: Púrpura e Ébano.</p>
+                    </div>
+                </div>
+                <button class="rpg-btn small" onclick="document.getElementById('codex-modal').classList.add('hidden')">Fechar Codex</button>
+            </div>
+        </div>
+
+        <div id="rules-modal" class="rpg-modal hidden rules-sheet" role="dialog" aria-modal="true" aria-labelledby="rules-title">
+            <div class="modal-content pergaminho-content">
+                <h2 id="rules-title" class="rpg-modal-title">Regras e Ensinamentos</h2>
+                <div id="rules-content">
+                    <h3>O Objetivo do Guardião</h3>
+                    <p>Em cada portal, você enfrenta um Pecado. Seu objetivo é resolver o enigma sob duas óticas (Saligia e Tenebris Ordo).</p>
+                    <h3>Mecânica de Alinhamento</h3>
+                    <p>Resolver o enigma no Modo Saligia e escolher o **Selo da Virtude** aumenta seu alinhamento com a Ordem. Escolher o **Ato da Vontade** favorece a Tenebris. Seu final será determinado pelo alinhamento majoritário!</p>
+                    <h3>O Sistema de Dicas</h3>
+                    <p>As dicas custam 50 Fragmentos (💎) e revelam uma parte da solução ou um trecho de lore crucial. Use com sabedoria, Guardião.</p>
+                </div>
+                <button class="rpg-btn small" onclick="document.getElementById('rules-modal').classList.add('hidden')">Entendido</button>
+            </div>
+        </div>
+
+        <div id="achievements-modal" class="rpg-modal hidden achievements-sheet" role="dialog" aria-modal="true" aria-labelledby="achievements-title">
+            <div class="modal-content">
+                <h2 id="achievements-title" class="rpg-modal-title">Feitos da Peregrinação</h2>
+                <div id="achievement-list" role="list">
+                    <div class="achievement-item locked">
+                        <span class="icon">🔒</span>
+                        <div class="ach-details">
+                            <h4>Início do Cisma</h4>
+                            <p>Desbloqueado ao completar o primeiro puzzle (Luxúria).</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item unlocked">
+                        <span class="icon">⭐</span>
+                        <div class="ach-details">
+                            <h4>Discípulo da Virtude</h4>
+                            <p>Desbloqueado: Selou 3 Pecados pela Saligia.</p>
+                        </div>
+                    </div>
+                </div>
+                <p id="achievement-progress">Progresso Total: 2/15</p>
+                <button class="rpg-btn small" onclick="document.getElementById('achievements-modal').classList.add('hidden')">Fechar</button>
+            </div>
+        </div>
+
+        <div id="conclusion-screen" class="game-screen hidden epic-conclusion" role="region" aria-label="Final da Jornada e Impacto das Escolhas">
+            <h1 class="title epic-title">O Destino de Aethelum</h1>
+            <div class="divider gold-divider"></div>
+            <p class="conclusion-intro">A jornada pelos Sete Portais chegou ao fim. O equilíbrio de Aethelum pende para o lado... </p>
+            <div id="final-result-display"></div>
+            <div id="final-stats" class="stats-table">
+                <h3>Registro da Peregrinação</h3>
+                <p><strong>Total de Fragmentos:</strong> <span id="final-score"></span></p>
+                <p><strong>Tempo Total de Jogo:</strong> <span id="final-time"></span></p>
+                <p><strong>Favorecido:</strong> <span id="final-faction"></span></p>
+            </div>
+            <p class="call-to-action">Deseja tentar reverter o destino de Aethelum?</p>
+            <div class="menu-options">
+                <button id="return-to-menu-final-btn" class="rpg-btn large">Retornar ao Menu Principal</button>
+                <button id="share-result-btn" class="rpg-btn small share-btn">Compartilhar o Fim</button>
+            </div>
+        </div>
+
+        <div id="credits-modal" class="rpg-modal hidden credits-sheet" role="dialog" aria-modal="true" aria-labelledby="credits-title">
+            <div class="modal-content pergaminho-content">
+                <h2 id="credits-title" class="rpg-modal-title">Rolos de Créditos</h2>
+                <div id="credits-list">
+                    <h3>Desenvolvimento e Concepção</h3>
+                    <p>Guardião Principal: [Seu Nome/Nome da Equipe]</p>
+                    <p>Assistente de Lore: Gemini (Modelo de Linguagem Grande)</p>
+                    <div class="divider"></div>
+                    <h3>Agradecimentos Especiais</h3>
+                    <p>Aos Sete Enigmas, pela inspiração.</p>
+                    <p>À comunidade RPG, pelo jeitinho gostoso.</p>
+                    <div class="divider"></div>
+                    <h3>Política Legal e Copyright</h3>
+                    <p>© 2024 Saligia & Tenebris Ordo Project. Conteúdo licenciado sob [Creative Commons/Licença Própria].</p>
+                </div>
+                <button class="rpg-btn small" onclick="document.getElementById('credits-modal').classList.add('hidden')">Voltar</button>
+            </div>
+        </div>
+
+    </div> <footer id="game-footer">
+        <p class="copyright">© 2024 Saligia & Tenebris Ordo Project. Todos os direitos reservados.</p>
+        <p class="credits"><a href="#" onclick="document.getElementById('credits-modal').classList.remove('hidden'); return false;">Créditos</a> | <a href="#" onclick="document.getElementById('credits-modal').classList.remove('hidden'); return false;">Legal</a></p>
+    </footer>
+
+    <script src="qc.js"></script>
+</body>
+</html>

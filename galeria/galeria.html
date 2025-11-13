@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria - HopeBorn</title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="galeria.css">
+</head>
+<body>
+    <header>
+        <h1>HopeBorn</h1>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/blog/paginas.html">Blog</a></li>
+                <li><a href="/personagens/personagens.html">Personagens</a></li>
+                <li><a href="/eventos/eventos.html">Eventos</a></li>
+                <li><a href="#" class="active">Galeria</a></li>
+                <li><a href="/qEJ/qej.html">Quiz & Jogos</a></li>
+                <li><a href="/about/about.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="gallery-hero">
+            <div class="hero-content">
+                <h1>Galeria de HopeBorn</h1>
+                <p>Arte, screenshots e momentos épicos da comunidade</p>
+            </div>
+        </section>
+
+        <section class="gallery-filters">
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Tudo</button>
+                <button class="filter-btn" data-filter="personagens">Personagens</button>
+                <button class="filter-btn" data-filter="cenarios">Cenários</button>
+                <button class="filter-btn" data-filter="eventos">Eventos</button>
+                <button class="filter-btn" data-filter="arte">Arte da Comunidade</button>
+                <button class="filter-btn" data-filter="screenshots">Screenshots</button>
+            </div>
+            <div class="sort-options">
+                <select id="sort-gallery">
+                    <option value="recent">Mais Recentes</option>
+                    <option value="popular">Mais Populares</option>
+                    <option value="oldest">Mais Antigos</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="gallery-grid">
+            <!-- Imagem 1 -->
+            <div class="gallery-item" data-category="personagens" data-likes="142">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1635830625698-3b9bd74671ca?q=80&w=1000&auto=format&fit=crop" alt="Krioni - O Mago do Orgulho">
+                    <div class="image-overlay">
+                        <div class="image-actions">
+                            <button class="like-btn">
+                                <i class="far fa-heart"></i>
+                                <span>142</span>
+                            </button>
+                            <button class="view-btn">
+                                <i class="far fa-eye"></i>
+                            </button>
+                            <button class="download-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Krioni - O Mago do Orgulho</h3>
+                    <p class="image-author">Por: <strong>ArteOfHope</strong></p>
+                    <p class="image-description">Representação artística do poderoso mago da facção Saligia em seu momento de glória.</p>
+                    <div class="image-tags">
+                        <span class="tag">#Saligia</span>
+                        <span class="tag">#Magia</span>
+                        <span class="tag">#Orgulho</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagem 2 -->
+            <div class="gallery-item" data-category="cenarios" data-likes="98">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1000&auto=format&fit=crop" alt="Cidade de HopeBorn">
+                    <div class="image-overlay">
+                        <div class="image-actions">
+                            <button class="like-btn">
+                                <i class="far fa-heart"></i>
+                                <span>98</span>
+                            </button>
+                            <button class="view-btn">
+                                <i class="far fa-eye"></i>
+                            </button>
+                            <button class="download-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Cidade de HopeBorn ao Amanhecer</h3>
+                    <p class="image-author">Por: <strong>MestreAlistair</strong></p>
+                    <p class="image-description">Vista panorâmica da capital durante o nascer do sol, mostrando suas torres imponentes.</p>
+                    <div class="image-tags">
+                        <span class="tag">#Cidade</span>
+                        <span class="tag">#Panorâmica</span>
+                        <span class="tag">#Amanhecer</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagem 3 -->
+            <div class="gallery-item" data-category="eventos" data-likes="215">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000&auto=format&fit=crop" alt="Torneio das Facções">
+                    <div class="image-overlay">
+                        <div class="image-actions">
+                            <button class="like-btn">
+                                <i class="far fa-heart"></i>
+                                <span>215</span>
+                            </button>
+                            <button class="view-btn">
+                                <i class="far fa-eye"></i>
+                            </button>
+                            <button class="download-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Torneio Anual das Facções</h3>
+                    <p class="image-author">Por: <strong>Chronicler</strong></p>
+                    <p class="image-description">Momento épico da final do último torneio entre Saligia e Tenebris Ordo.</p>
+                    <div class="image-tags">
+                        <span class="tag">#Torneio</span>
+                        <span class="tag">#Facções</span>
+                        <span class="tag">#Batalha</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagem 4 -->
+            <div class="gallery-item" data-category="personagens" data-likes="167">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1583324113626-70df0f4dea75?q=80&w=1000&auto=format&fit=crop" alt="Ren - Lâmina Florida">
+                    <div class="image-overlay">
+                        <div class="image-actions">
+                            <button class="like-btn">
+                                <i class="far fa-heart"></i>
+                                <span>167</span>
+                            </button>
+                            <button class="view-btn">
+                                <i class="far fa-eye"></i>
+                            </button>
+                            <button class="download-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Ren - A Lâmina Florida</h3>
+                    <p class="image-author">Por: <strong>ShadowArtist</strong></p>
+                    <p class="image-description">A mestra das espadas da Tenebris Ordo em pose de combate, cercada por pétalas.</p>
+                    <div class="image-tags">
+                        <span class="tag">#TenebrisOrdo</span>
+                        <span class="tag">#Espadas</span>
+                        <span class="tag">#LâminaFlorida</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagem 5 -->
+            <div class="gallery-item" data-category="arte" data-likes="89">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1000&auto=format&fit=crop" alt="Morwen Satanael">
+                    <div class="image-overlay">
+                        <div class="image-actions">
+                            <button class="like-btn">
+                                <i class="far fa-heart"></i>
+                                <span>89</span>
+                            </button>
+                            <button class="view-btn">
+                                <i class="far fa-eye"></i>
+                            </button>
+                            <button class="download-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Morwen Satanael - Arte Conceitual</h3>
+                    <p class="image-author">Por: <strong>DemonSketch</strong></p>
+                    <p class="image-description">Arte conceitual desenvolvida para a personagem Morwen da facção Gehenna.</p>
+                    <div class="image-tags">
+                        <span class="tag">#Gehenna</span>
+                        <span class="tag">#ArteConceitual</span>
+                        <span class="tag">#MagiaDemoníaca</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagem 6 -->
+            <div class="gallery-item" data-category="screenshots" data-likes="76">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop" alt="Batalha Épica">
+                    <div class="image-overlay">
+                        <div class="image-actions">
+                            <button class="like-btn">
+                                <i class="far fa-heart"></i>
+                                <span>76</span>
+                            </button>
+                            <button class="view-btn">
+                                <i class="far fa-eye"></i>
+                            </button>
+                            <button class="download-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Batalha nas Planíces Sombrias</h3>
+                    <p class="image-author">Por: <strong>BattleMaster</strong></p>
+                    <p class="image-description">Screenshot da épica batalha contra o exército demoníaco nas planícies.</p>
+                    <div class="image-tags">
+                        <span class="tag">#Batalha</span>
+                        <span class="tag">#Screenshot</span>
+                        <span class="tag">#EventoÉpico</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagem 7 -->
+            <div class="gallery-item" data-category="cenarios" data-likes="134">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000&auto=format&fit=crop" alt="Floresta Encantada">
+                    <div class="image-overlay">
+                        <div class="image-actions">
+                            <button class="like-btn">
+                                <i class="far fa-heart"></i>
+                                <span>134</span>
+                            </button>
+                            <button class="view-btn">
+                                <i class="far fa-eye"></i>
+                            </button>
+                            <button class="download-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Floresta Encantada de Elendor</h3>
+                    <p class="image-author">Por: <strong>NaturePhotog</strong></p>
+                    <p class="image-description">A misteriosa floresta onde os segredos ancestrais aguardam por aventureiros.</p>
+                    <div class="image-tags">
+                        <span class="tag">#Floresta</span>
+                        <span class="tag">#Mistério</span>
+                        <span class="tag">#Natureza</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagem 8 -->
+            <div class="gallery-item" data-category="arte" data-likes="203">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?q=80&w=1000&auto=format&fit=crop" alt="Camille - Tecelã de Sombras">
+                    <div class="image-overlay">
+                        <div class="image-actions">
+                            <button class="like-btn">
+                                <i class="far fa-heart"></i>
+                                <span>203</span>
+                            </button>
+                            <button class="view-btn">
+                                <i class="far fa-eye"></i>
+                            </button>
+                            <button class="download-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Camille - A Tecelã de Sombras</h3>
+                    <p class="image-author">Por: <strong>DarkArtStudio</strong></p>
+                    <p class="image-description">Arte em aquarela representando a assassina mais temida da Tenebris Ordo.</p>
+                    <div class="image-tags">
+                        <span class="tag">#TenebrisOrdo</span>
+                        <span class="tag">#Assassina</span>
+                        <span class="tag">#Aquarela</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagem 9 -->
+            <div class="gallery-item" data-category="eventos" data-likes="118">
+                <div class="gallery-image">
+                    <img src="https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1000&auto=format&fit=crop" alt="Festival da Lua">
+                    <div class="image-overlay">
+                        <div class="image-actions">
+                            <button class="like-btn">
+                                <i class="far fa-heart"></i>
+                                <span>118</span>
+                            </button>
+                            <button class="view-btn">
+                                <i class="far fa-eye"></i>
+                            </button>
+                            <button class="download-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-info">
+                    <h3>Festival da Lua de Prata</h3>
+                    <p class="image-author">Por: <strong>FestivalGoer</strong></p>
+                    <p class="image-description">Celebração anual que reúne todas as facções em uma noite de paz e diversão.</p>
+                    <div class="image-tags">
+                        <span class="tag">#Festival</span>
+                        <span class="tag">#Celebração</span>
+                        <span class="tag">#União</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="load-more-section">
+            <button class="load-more-btn">Carregar Mais Imagens</button>
+        </section>
+
+        <section class="upload-section">
+            <div class="upload-container">
+                <h2>Compartilhe Sua Arte</h2>
+                <p>Faça parte da galeria compartilhando suas screenshots, artes e momentos épicos!</p>
+                <div class="upload-zone" id="upload-zone">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Arraste e solte sua imagem aqui ou</p>
+                    <button class="upload-btn">Selecionar Arquivo</button>
+                    <input type="file" id="file-input" accept="image/*" style="display: none;">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal de Visualização -->
+    <div id="image-modal" class="image-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-image-container">
+                <img id="modal-image" src="" alt="">
+            </div>
+            <div class="modal-info">
+                <h3 id="modal-title"></h3>
+                <p id="modal-author"></p>
+                <p id="modal-description"></p>
+                <div id="modal-tags" class="modal-tags"></div>
+                <div class="modal-actions">
+                    <button class="modal-like-btn">
+                        <i class="far fa-heart"></i>
+                        <span id="modal-likes">0</span>
+                    </button>
+                    <button class="modal-download-btn">
+                        <i class="fas fa-download"></i>
+                        Download
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>HopeBorn</h3>
+                <p>O site de entretenimento de Signs Of Hope!</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/blog/paginas.html">Blog</a></li>
+                    <li><a href="/personagens/personagens.html">Personagens</a></li>
+                    <li><a href="#">Galeria</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Conecte-se</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2018 Signs Of Hope. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="galeria.js"></script>
+</body>
+</html>

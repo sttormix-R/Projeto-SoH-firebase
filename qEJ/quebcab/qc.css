@@ -1,0 +1,860 @@
+/*
+ * QC.CSS - Estilo Medieval RPG para 7 Pecados (VERSÃO ANIMAÇÃO E INTERAÇÃO MÁXIMA)
+ * Estrutura: Reset > Fontes/Variáveis > Animações > Utilitários > Componentes > Telas > Modals > Responsividade
+ */
+
+/* ---------------------------------------------------- */
+/* 0. RESET E VARIÁVEIS GLOBAIS */
+/* ---------------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Cores */
+    --color-pergaminho: #f7e7c8;
+    --color-pergaminho-dark: #e6d3af;
+    --color-dark-wood: #4a2d1f;
+    --color-bronze: #a38c71;
+    --color-gold: #ffd700;
+    
+    /* Cores de Facção */
+    --color-saligia: #4caf50;
+    --color-tenebris: #b71c1c;
+    --color-success: #388e3c;
+    --color-error: #d32f2f;
+    
+    /* Tipografia (Manter fontes seguras) */
+    --font-rpg: 'Georgia', 'Times New Roman', serif;
+    --font-title: 'Georgia', serif;
+    
+    /* Dimensões e Efeitos */
+    --border-thickness: 3px;
+    --spacing-unit: 10px;
+    --transition-fast: 0.15s ease-out;
+    --transition-slow: 0.3s ease-in-out;
+}
+
+/* ---------------------------------------------------- */
+/* 1. KEYFRAMES E ANIMAÇÕES CSS PURAS */
+/* ---------------------------------------------------- */
+
+@keyframes pulse {
+    0% { box-shadow: 4px 4px 0px var(--color-dark-wood); }
+    50% { box-shadow: 4px 4px 10px var(--color-gold); }
+    100% { box-shadow: 4px 4px 0px var(--color-dark-wood); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInFromTop {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes wiggle {
+    0%, 7% { transform: rotateZ(0); }
+    15% { transform: rotateZ(-5deg); }
+    25% { transform: rotateZ(5deg); }
+    35% { transform: rotateZ(-3deg); }
+    45% { transform: rotateZ(3deg); }
+    55% { transform: rotateZ(0); }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+@keyframes sway {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(1deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* ---------------------------------------------------- */
+/* 2. ESTRUTURA E FUNDO */
+/* ---------------------------------------------------- */
+
+body {
+    background: #1c1c1c url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 10 10'><rect width='10' height='10' fill='%232c2c2c'/><path d='M0 0 H5 V5 M5 5 H10 V10' fill='none' stroke='%233a3a3a' stroke-width='0.5'/></svg>") repeat;
+    color: var(--color-dark-wood);
+    font-family: var(--font-rpg);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+#game-container {
+    width: 100%;
+    max-width: 1300px;
+    min-height: 100vh;
+    position: relative;
+    padding: var(--spacing-unit);
+    display: flex; /* Adicionado para centralizar conteúdo */
+    flex-direction: column; /* Adicionado */
+    align-items: center; /* Adicionado */
+    justify-content: center; /* Adicionado */
+}
+
+.game-screen {
+    position: absolute; /* Mudado de relative para absolute para evitar sobreposição */
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    transition: opacity var(--transition-slow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.active {
+    animation: fadeIn var(--transition-slow) both;
+}
+.hidden {
+    display: none !important;
+    opacity: 0;
+}
+
+/* ---------------------------------------------------- */
+/* 3. ESTILO PERGAMINHO E TIPOGRAFIA (IMERSÃO) */
+/* ---------------------------------------------------- */
+
+.pergaminho-content, .rpg-modal .modal-content, #puzzle-area {
+    background-color: var(--color-pergaminho);
+    border: var(--border-thickness) solid var(--color-dark-wood);
+    padding: calc(var(--spacing-unit) * 3);
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.4);
+    max-width: 800px;
+    margin: var(--spacing-unit);
+    position: relative;
+    border-radius: 5px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><path d='M1 3h1v1H1V3zm2-2h1v1H3V1z' fill='%23e0cfa5' opacity='0.7'/></svg>");
+    text-align: center;
+    z-index: 10; /* Para garantir que pergaminhos fiquem acima */
+}
+
+.title {
+    font-family: var(--font-title);
+    color: var(--color-dark-wood);
+    font-size: 3em;
+    text-shadow: 2px 2px 0 var(--color-gold);
+    margin-bottom: var(--spacing-unit);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-family: var(--font-rpg);
+    color: var(--color-dark-wood);
+    font-size: 1.5em;
+    margin-bottom: var(--spacing-unit) * 2;
+    font-style: italic;
+}
+
+.divider {
+    width: 80%;
+    height: 3px;
+    background: var(--color-bronze);
+    margin: var(--spacing-unit) auto calc(var(--spacing-unit) * 2) auto;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+.divider.gold-divider {
+    background: linear-gradient(to right, transparent, var(--color-gold), transparent);
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: var(--spacing-unit) * 1.5;
+    text-align: justify;
+    font-size: 1.1em;
+}
+
+strong {
+    color: var(--color-tenebris);
+    font-weight: bold;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Logo de Facções (Introdução) */
+.logo-faccao {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+    animation: fadeIn 1s ease-out both;
+}
+.saligia { top: 10%; left: 10%; animation-delay: 0.5s; }
+.tenebris { bottom: 10%; right: 10%; animation-delay: 0.8s; }
+
+/* ---------------------------------------------------- */
+/* 4. BOTÕES (METAL/BRONZE) E INTERAÇÃO */
+/* ---------------------------------------------------- */
+
+.rpg-btn {
+    background-color: var(--color-bronze);
+    border: var(--border-thickness) solid var(--color-dark-wood);
+    color: var(--color-dark-wood);
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+    font-size: 1.2em;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0px var(--color-dark-wood);
+    transition: all var(--transition-fast);
+    font-family: var(--font-rpg);
+    margin: var(--spacing-unit) 5px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    background-image: linear-gradient(180deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,.1) 100%);
+}
+
+.rpg-btn:hover {
+    background-color: #b8a287;
+    box-shadow: 2px 2px 0px var(--color-dark-wood), 0 0 10px rgba(255, 215, 0, 0.5);
+    transform: translate(2px, 2px);
+}
+
+.rpg-btn:active {
+    box-shadow: 0 0 0px var(--color-dark-wood);
+    transform: translate(4px, 4px);
+}
+
+.rpg-btn.large {
+    font-size: 1.5em;
+    padding: var(--spacing-unit) * 1.5 calc(var(--spacing-unit) * 3);
+}
+
+.rpg-btn.small {
+    font-size: 0.9em;
+    padding: 5px 10px;
+}
+
+.rpg-btn.warning {
+    background-color: var(--color-tenebris);
+    color: var(--color-pergaminho);
+    border-color: #8b0000;
+}
+.rpg-btn.warning:hover {
+    background-color: #d32f2f;
+}
+
+.rpg-btn.pulsating {
+    animation: pulse 1.5s infinite;
+}
+
+/* Botão de Som */
+#toggle-sound-btn.sound-on::before { content: "🔊 "; }
+#toggle-sound-btn.sound-off::before { content: "🔇 "; }
+
+/* ---------------------------------------------------- */
+/* 5. HUD E PAINÉIS DE STATUS (INTERATIVIDADE) */
+/* ---------------------------------------------------- */
+
+#hud {
+    width: 100%;
+    background-color: #3e2723;
+    color: var(--color-pergaminho);
+    padding: var(--spacing-unit);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 5px solid var(--color-dark-wood);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    animation: slideInFromTop 0.5s both;
+}
+
+.hud-panel {
+    display: flex;
+    gap: calc(var(--spacing-unit) * 2);
+    align-items: center;
+}
+
+.stat-box {
+    background-color: #6d4c41;
+    border: 2px solid var(--color-dark-wood);
+    padding: 5px 12px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1em;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+    min-width: 80px;
+    transition: transform var(--transition-fast);
+}
+.stat-box:hover {
+    transform: scale(1.05);
+}
+
+.stat-box.attempts .icon {
+    color: #e57373;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.rpg-btn.pause-btn {
+    font-weight: bold;
+    font-size: 1.5em;
+    padding: 2px 10px;
+}
+.rpg-btn.pause-btn:hover {
+    background-color: var(--color-gold);
+    color: var(--color-dark-wood);
+}
+
+/* Barra de Progresso/Influência */
+#progress-bar-container {
+    width: 80%;
+    max-width: 800px;
+    height: 18px;
+    margin: calc(var(--spacing-unit) * 2) auto;
+    background-color: var(--color-pergaminho-dark);
+    border: 3px solid var(--color-dark-wood);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+#progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, var(--color-saligia), #86cf88);
+    transition: width 0.5s ease-out, background-color var(--transition-slow);
+}
+
+#progress-bar-fill.high-saligia {
+    box-shadow: 0 0 10px var(--color-saligia);
+}
+#progress-bar-fill.high-tenebris {
+    background: linear-gradient(to right, var(--color-tenebris), #e57373);
+    box-shadow: 0 0 10px var(--color-tenebris);
+}
+
+/* Ícones de Facção (Pequenos no HUD) */
+.faction-icon {
+    width: 25px; height: 25px; /* Aumentado ligeiramente */
+    margin-right: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.faction-icon.saligia-small {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%234caf50'/><path d='M50 5 L50 95 M5 50 L95 50' stroke='%23388e3c' stroke-width='5'/></svg>");
+}
+.faction-icon.tenebris-small {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50 5, 95 95, 5 95' fill='%23b71c1c'/><path d='M50 20 L20 80 M50 20 L80 80' stroke='%23d32f2f' stroke-width='5'/></svg>");
+}
+
+
+/* ---------------------------------------------------- */
+/* 6. ÁREAS DE INTERAÇÃO (DIÁLOGO E ESCOLHAS) */
+/* ---------------------------------------------------- */
+
+/* Área de Diálogo - Animação de 'Digitação' (Placeholder CSS) */
+.rpg-dialogue-box {
+    width: 90%;
+    max-width: 850px;
+    min-height: 120px;
+    background-color: var(--color-dark-wood);
+    color: var(--color-pergaminho);
+    border: 3px solid var(--color-bronze);
+    padding: 15px;
+    margin: 20px auto;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.6);
+    text-align: left;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 0.8s 0.2s both;
+}
+
+/* Botão de Avançar Diálogo */
+#next-dialogue-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #6d4c41;
+    border-color: #3e2723;
+    animation: pulse 2s infinite;
+}
+
+/* Área de Escolhas (Hover dramático) */
+.rpg-choice-box {
+    background-color: var(--color-dark-wood);
+    color: var(--color-pergaminho);
+    border: 3px solid var(--color-gold);
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    max-width: 600px;
+}
+
+.rpg-choice-box .rpg-btn {
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.rpg-choice-box .rpg-btn:hover {
+    transform: scale(1.03);
+    border-width: 4px;
+}
+
+.choice-saligia:hover {
+    box-shadow: 0 0 15px var(--color-saligia);
+}
+.choice-tenebris:hover {
+    box-shadow: 0 0 15px var(--color-tenebris);
+}
+
+/* ---------------------------------------------------- */
+/* 7. MODALS (VIDRO, TRANSIÇÃO E TEMA) */
+/* ---------------------------------------------------- */
+
+.rpg-modal {
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+}
+
+.rpg-modal .modal-content {
+    animation: fadeIn 0.4s both;
+    transform: scale(0.95);
+    transition: transform 0.4s;
+    border: 5px solid var(--color-gold);
+}
+.rpg-modal:not(.hidden) .modal-content {
+    transform: scale(1);
+}
+
+/* Ficha do Personagem - Animação de Alinhamento */
+.character-sheet .modal-content {
+    max-width: 550px;
+    text-align: left;
+    display: grid;
+    grid-template-areas: 
+        "title title"
+        "portrait stats"
+        "alignment alignment"
+        "button button";
+    gap: 15px;
+}
+.sheet-title { grid-area: title; text-align: center; }
+.character-portrait { grid-area: portrait; text-align: center; }
+.character-portrait img { 
+    width: 120px; height: 120px; border-radius: 50%; 
+    border: 4px solid var(--color-dark-wood);
+    object-fit: cover;
+}
+.stats-grid { 
+    grid-area: stats; 
+    font-size: 0.95em;
+}
+.stat-item strong { color: var(--color-dark-wood); }
+
+#reputation-bar {
+    grid-area: alignment;
+    height: 25px;
+    background-color: var(--color-tenebris);
+    border: 2px solid var(--color-dark-wood);
+    display: flex;
+    overflow: visible;
+    margin-top: 10px;
+    position: relative; /* Para posicionar o indicador */
+}
+#reputation-saligia {
+    transition: width var(--transition-slow);
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-pergaminho);
+    line-height: 20px;
+    background-color: var(--color-saligia);
+}
+#reputation-tenebris {
+    flex-grow: 1; /* Preenche o restante */
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-pergaminho);
+    line-height: 20px;
+    background-color: var(--color-tenebris); /* Garante que a cor esteja lá */
+}
+#scale-indicator {
+    position: absolute;
+    top: -15px;
+    left: 50%; /* Posição neutra inicial */
+    transform: translateX(-50%);
+    font-size: 1.5em;
+    color: var(--color-gold);
+    transition: left var(--transition-slow); /* Animação do indicador */
+    filter: drop-shadow(0 0 3px rgba(0,0,0,0.5));
+}
+
+/* Codex/Regras - Abas interativas */
+.codex-sheet .modal-content, .rules-sheet .modal-content {
+    max-width: 700px;
+    text-align: left;
+}
+.codex-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.codex-tabs .rpg-btn {
+    margin: 0 5px;
+    background-color: var(--color-pergaminho-dark);
+}
+.codex-tabs .rpg-btn.active {
+    background-color: var(--color-bronze);
+    border-color: var(--color-dark-wood);
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+}
+.codex-tabs .rpg-btn:not(.active):hover {
+    background-color: #b8a287;
+    transform: translateY(-2px);
+    box-shadow: 2px 5px 0 var(--color-dark-wood);
+}
+.codex-page {
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+    animation: fadeIn 0.5s both;
+}
+
+/* Estilo para Inputs Temáticos (Configurações) */
+.option-group h4 {
+    color: var(--color-dark-wood);
+    border-bottom: 2px solid var(--color-bronze);
+    padding-bottom: 5px;
+    margin-top: 15px;
+}
+.option-group label {
+    display: block;
+    margin: 8px 0;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+/* Range Input (Slider de Volume) - Estilização complexa */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: var(--color-pergaminho-dark);
+    border: 1px solid var(--color-dark-wood);
+    border-radius: 5px;
+    margin: 5px 0;
+    cursor: pointer;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 10px;
+    border-radius: 3px;
+    background: var(--color-bronze);
+    border: 2px solid var(--color-dark-wood);
+    cursor: pointer;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Checkbox (Estilo Customizado) */
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-dark-wood);
+    background-color: var(--color-pergaminho-dark);
+    margin-right: 8px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+input[type="checkbox"]:checked {
+    background-color: var(--color-saligia);
+    border-color: var(--color-success);
+}
+input[type="checkbox"]:checked::before {
+    content: '✓';
+    display: block;
+    color: var(--color-pergaminho);
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+}
+
+/* ---------------------------------------------------- */
+/* 8. TELA DE MENU PRINCIPAL E CARDS (CORREÇÃO DA IMAGEM!) */
+/* ---------------------------------------------------- */
+
+#main-menu {
+    flex-direction: row; /* Alterado para row */
+    align-items: flex-start; /* Alinha no topo */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 40px; /* Espaço entre os grids */
+    padding: 50px 0;
+    width: 100%;
+    position: relative; /* Para o pergaminho de fundo */
+}
+
+/* Novo Pergaminho de Fundo no Menu Principal */
+#main-menu::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-2deg); /* Leve rotação */
+    width: 110%; /* Ocupa mais espaço */
+    height: 90%;
+    background-color: var(--color-pergaminho);
+    border: var(--border-thickness) solid var(--color-dark-wood);
+    box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='6'><path d='M1 3h1v1H1V3zm2-2h1v1H3V1z' fill='%23e0cfa5' opacity='0.7'/></svg>");
+    z-index: 5; /* Fica atrás do conteúdo */
+}
+
+#main-menu .title {
+    position: absolute;
+    top: 30px; /* Posição do título no pergaminho */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    z-index: 15;
+    text-align: center;
+    font-size: 2.8em;
+}
+
+#faction-scale {
+    position: absolute; /* Fixa a balança */
+    top: 120px; /* Ajuste para baixo do título */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px; /* Largura da balança */
+    height: 30px;
+    background-color: var(--color-pergaminho-dark);
+    border: 2px solid var(--color-dark-wood);
+    border-radius: 15px;
+    display: flex;
+    overflow: hidden;
+    z-index: 15;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+}
+#scale-saligia-fill, #scale-tenebris-fill {
+    height: 100%;
+    transition: width var(--transition-slow);
+}
+#scale-saligia-fill { background-color: var(--color-saligia); }
+#scale-tenebris-fill { background-color: var(--color-tenebris); }
+#faction-scale span#scale-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8em;
+    color: var(--color-gold);
+    text-shadow: 0 0 5px rgba(0,0,0,0.7);
+    animation: sway 3s ease-in-out infinite alternate; /* Balança suavemente */
+}
+
+#phase-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas para os pecados */
+    gap: 25px;
+    margin-top: 200px; /* Afasta dos elementos superiores */
+    max-width: 900px;
+    width: 100%; /* Ocupa a largura total disponível na coluna */
+    z-index: 15; /* Acima do pergaminho de fundo */
+    padding-right: 20px; /* Espaçamento da lateral direita */
+}
+
+.phase-card {
+    background-color: #3e2723;
+    border: 4px solid var(--color-gold);
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+    color: var(--color-pergaminho);
+    border-radius: 5px;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.6);
+    /* Texto adicional para cada pecado (para exemplo) */
+    font-size: 1.2em;
+}
+
+.phase-card h3 {
+    margin-bottom: 5px;
+    font-size: 1.5em;
+    color: var(--color-gold);
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    text-transform: uppercase;
+}
+.phase-card p {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+    line-height: 1.3;
+    color: #ccc;
+    text-align: center;
+}
+.phase-card .mode-selector {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    margin-top: 10px;
+}
+.mode-btn {
+    flex-grow: 1;
+    padding: 3px 5px;
+    font-size: 0.7em;
+    border: 1px solid var(--color-dark-wood);
+    background-color: #6d4c41;
+    color: var(--color-pergaminho);
+    border-radius: 3px;
+    text-transform: uppercase;
+    transition: all var(--transition-fast);
+}
+.mode-btn.active-mode {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 5px var(--color-gold);
+    font-weight: bold;
+    background-color: #a38c71;
+    color: var(--color-dark-wood);
+}
+.mode-btn.locked {
+    opacity: 0.5;
+    background-color: #4a2d1f;
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column; /* Botões empilhados verticalmente */
+    gap: 15px; /* Mais espaço entre os botões */
+    margin-top: 200px; /* Alinha com os cards */
+    max-width: 250px;
+    width: 100%;
+    z-index: 15;
+    padding-left: 20px; /* Espaçamento da lateral esquerda */
+}
+.menu-options .rpg-btn {
+    width: 100%; /* Faz os botões ocuparem a largura total */
+    margin: 0; /* Remove margens extras */
+}
+
+/* ---------------------------------------------------- */
+/* 9. RODAPÉ E CRÉDITOS */
+/* ---------------------------------------------------- */
+
+#game-footer {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #111;
+    color: #888;
+    position: absolute; /* Fixa no fundo da tela, não da game-container */
+    bottom: 0;
+    left: 0;
+    z-index: 20; /* Sempre por cima */
+    font-size: 0.8em;
+    font-family: Arial, sans-serif;
+    border-top: 3px solid var(--color-dark-wood);
+}
+#game-footer a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+#game-footer a:hover {
+    color: var(--color-gold);
+    text-shadow: 0 0 5px var(--color-gold);
+}
+
+
+/* ---------------------------------------------------- */
+/* 10. RESPONSIVIDADE (Ajustes FINAIS) */
+/* ---------------------------------------------------- */
+
+@media (max-width: 1024px) {
+    #main-menu {
+        flex-direction: column; /* Volta a empilhar no mobile */
+        align-items: center;
+        gap: 30px;
+    }
+    #main-menu::before {
+        width: 95%;
+        height: 95%;
+        transform: translate(-50%, -50%) rotate(-1deg);
+    }
+    #main-menu .title { top: 20px; font-size: 2.5em; }
+    #faction-scale { top: 90px; width: 250px; }
+    #phase-list {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas */
+        margin-top: 160px;
+        padding: 0 10px;
+        max-width: 600px;
+    }
+    .menu-options {
+        margin-top: 20px; /* Reduz margem superior */
+        max-width: 300px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    #hud {
+        flex-direction: column;
+    }
+    .hud-panel {
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+    }
+    .hud-panel.left-panel { order: 2; }
+    .hud-panel.center-panel { order: 1; margin-bottom: 5px; }
+    .hud-panel.right-panel { order: 3; }
+
+    .rpg-btn {
+        font-size: 1em;
+        padding: 8px 15px;
+        margin: 5px;
+    }
+
+    #main-menu {
+        padding-bottom: 80px; /* Espaço para o rodapé */
+    }
+    #main-menu .title { font-size: 2em; top: 15px; }
+    #faction-scale { top: 70px; width: 200px; }
+    #phase-list {
+        grid-template-columns: 1fr; /* 1 coluna */
+        margin-top: 130px;
+        max-width: 300px;
+    }
+    
+    .character-sheet .modal-content {
+        grid-template-areas: 
+            "title"
+            "portrait"
+            "stats"
+            "alignment"
+            "button";
+        text-align: center;
+    }
+    
+    .rpg-dialogue-box {
+        min-height: 150px;
+    }
+
+    .logo-faccao {
+        width: 80px; height: 80px;
+    }
+    .saligia { top: 5%; left: 5%; }
+    .tenebris { bottom: 5%; right: 5%; }
+}

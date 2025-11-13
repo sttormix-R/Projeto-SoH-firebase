@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz & Jogos - HopeBorn</title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="qej.css">
+</head>
+<body>
+    <header>
+        <h1>HopeBorn</h1>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/blog/paginas.html">Blog</a></li>
+                <li><a href="/personagens/personagens.html">Personagens</a></li>
+                <li><a href="/eventos/eventos.html">Eventos</a></li>
+                <li><a href="/galeria/galeria.html">Galeria</a></li>
+                <li><a href="#" class="active">Quiz & Jogos</a></li>
+                <li><a href="/about/about.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="games-hero">
+            <div class="hero-content">
+                <h1>Quiz & Jogos</h1>
+                <p>Teste seu conhecimento sobre HopeBorn e divirta-se com nossos minijogos!</p>
+            </div>
+        </section>
+
+        <section class="games-categories">
+            <div class="category-tabs">
+                <button class="tab-btn active" data-tab="quizzes">Quizzes</button>
+                <button class="tab-btn" data-tab="minigames">Minijogos</button>
+                <button class="tab-btn" data-tab="desafios">Desafios</button>
+                <button class="tab-btn" data-tab="ranking">Ranking</button>
+            </div>
+        </section>
+
+        <!-- Quizzes Section -->
+        <section id="quizzes" class="tab-content active">
+            <h2 class="section-title">Quizzes de HopeBorn</h2>
+            <p class="section-subtitle">Teste seu conhecimento sobre o mundo, personagens e história de HopeBorn</p>
+            
+            <div class="quizzes-grid">
+                <!-- Quiz 1 -->
+                <div class="quiz-card" data-difficulty="hard" data-category="lore">
+                    <div class="quiz-header">
+                        <span class="quiz-difficulty hard">Difícil</span>
+                        <span class="quiz-category">Lore</span>
+                    </div>
+                    <div class="quiz-image">
+                        <img src="https://images.unsplash.com/photo-1586987177716-891b3ff0d13d?q=80&w=1000&auto=format&fit=crop" alt="Quiz Lore">
+                    </div>
+                    <div class="quiz-content">
+                        <h3>Conhecimento Geral de HopeBorn</h3>
+                        <p class="quiz-description">Quanto você realmente sabe sobre a história e o mundo de HopeBorn? 20 perguntas desafiadoras!</p>
+                        <div class="quiz-stats">
+                            <div class="stat">
+                                <i class="fas fa-question"></i>
+                                <span>20 perguntas</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>15 min</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <span>2.4K feitos</span>
+                            </div>
+                        </div>
+                        <div class="quiz-meta">
+                            <div class="high-score">
+                                <i class="fas fa-trophy"></i>
+                                <span>Recorde: 95%</span>
+                            </div>
+                            <div class="success-rate">
+                                <span>32% acertam tudo</span>
+                            </div>
+                        </div>
+                        <button class="start-quiz-btn" data-quiz="lore-geral">Iniciar Quiz</button>
+                    </div>
+                </div>
+
+                <!-- Quiz 2 -->
+                <div class="quiz-card" data-difficulty="medium" data-category="personagens">
+                    <div class="quiz-header">
+                        <span class="quiz-difficulty medium">Médio</span>
+                        <span class="quiz-category">Personagens</span>
+                    </div>
+                    <div class="quiz-image">
+                        <img src="https://images.unsplash.com/photo-1635830625698-3b9bd74671ca?q=80&w=1000&auto=format&fit=crop" alt="Quiz Personagens">
+                    </div>
+                    <div class="quiz-content">
+                        <h3>Quem é Quem em HopeBorn</h3>
+                        <p class="quiz-description">Identifique personagens, suas facções, habilidades e histórias pessoais.</p>
+                        <div class="quiz-stats">
+                            <div class="stat">
+                                <i class="fas fa-question"></i>
+                                <span>15 perguntas</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>10 min</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <span>3.1K feitos</span>
+                            </div>
+                        </div>
+                        <div class="quiz-meta">
+                            <div class="high-score">
+                                <i class="fas fa-trophy"></i>
+                                <span>Recorde: 100%</span>
+                            </div>
+                            <div class="success-rate">
+                                <span>45% acertam tudo</span>
+                            </div>
+                        </div>
+                        <button class="start-quiz-btn" data-quiz="quem-e-quem">Iniciar Quiz</button>
+                    </div>
+                </div>
+
+                <!-- Quiz 3 -->
+                <div class="quiz-card" data-difficulty="easy" data-category="facções">
+                    <div class="quiz-header">
+                        <span class="quiz-difficulty easy">Fácil</span>
+                        <span class="quiz-category">Facções</span>
+                    </div>
+                    <div class="quiz-image">
+                        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000&auto=format&fit=crop" alt="Quiz Facções">
+                    </div>
+                    <div class="quiz-content">
+                        <h3>Facções e Suas Guerras</h3>
+                        <p class="quiz-description">Teste seu conhecimento sobre as três grandes facções e seus conflitos.</p>
+                        <div class="quiz-stats">
+                            <div class="stat">
+                                <i class="fas fa-question"></i>
+                                <span>12 perguntas</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>8 min</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <span>1.8K feitos</span>
+                            </div>
+                        </div>
+                        <div class="quiz-meta">
+                            <div class="high-score">
+                                <i class="fas fa-trophy"></i>
+                                <span>Recorde: 98%</span>
+                            </div>
+                            <div class="success-rate">
+                                <span>67% acertam tudo</span>
+                            </div>
+                        </div>
+                        <button class="start-quiz-btn" data-quiz="faccoes">Iniciar Quiz</button>
+                    </div>
+                </div>
+
+                <!-- Quiz 4 -->
+                <div class="quiz-card" data-difficulty="hard" data-category="magia">
+                    <div class="quiz-header">
+                        <span class="quiz-difficulty hard">Difícil</span>
+                        <span class="quiz-category">Magia</span>
+                    </div>
+                    <div class="quiz-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1000&auto=format&fit=crop" alt="Quiz Magia">
+                    </div>
+                    <div class="quiz-content">
+                        <h3>Sistemas Mágicos de HopeBorn</h3>
+                        <p class="quiz-description">Domine o conhecimento sobre os diferentes tipos de magia e seus praticantes.</p>
+                        <div class="quiz-stats">
+                            <div class="stat">
+                                <i class="fas fa-question"></i>
+                                <span>18 perguntas</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>12 min</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <span>1.2K feitos</span>
+                            </div>
+                        </div>
+                        <div class="quiz-meta">
+                            <div class="high-score">
+                                <i class="fas fa-trophy"></i>
+                                <span>Recorde: 89%</span>
+                            </div>
+                            <div class="success-rate">
+                                <span>18% acertam tudo</span>
+                            </div>
+                        </div>
+                        <button class="start-quiz-btn" data-quiz="magia">Iniciar Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Minigames Section -->
+        <section id="minigames" class="tab-content">
+            <h2 class="section-title">Minijogos</h2>
+            <p class="section-subtitle">Divirta-se com jogos rápidos baseados no universo de HopeBorn</p>
+            
+            <div class="minigames-grid">
+                <!-- Minigame 1 -->
+                <div class="minigame-card">
+                    <div class="minigame-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <div class="minigame-content">
+                        <h3>Quebra-Cabeça das Facções</h3>
+                        <p class="minigame-description">Monte o quebra-cabeça com símbolos e personagens das três grandes facções.</p>
+                        <div class="minigame-stats">
+                            <div class="stat">
+                                <i class="fas fa-star"></i>
+                                <span>4.8/5</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-play-circle"></i>
+                                <span>5.2K jogos</span>
+                            </div>
+                        </div>
+                        <a href="/qEJ/quebcab/qc.html"><button class="play-game-btn" data-game="puzzle">Jogar Agora</button></a>
+                    </div>
+                </div>
+
+                <!-- Minigame 2 -->
+                <div class="minigame-card">
+                    <div class="minigame-icon">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <div class="minigame-content">
+                        <h3>Memória Mágica</h3>
+                        <p class="minigame-description">Encontre os pares de cartas com feitiços e criaturas de HopeBorn.</p>
+                        <div class="minigame-stats">
+                            <div class="stat">
+                                <i class="fas fa-star"></i>
+                                <span>4.6/5</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-play-circle"></i>
+                                <span>3.8K jogos</span>
+                            </div>
+                        </div>
+                        <button class="play-game-btn" data-game="memoria">Jogar Agora</button>
+                    </div>
+                </div>
+
+                <!-- Minigame 3 -->
+                <div class="minigame-card">
+                    <div class="minigame-icon">
+                        <i class="fas fa-crosshairs"></i>
+                    </div>
+                    <div class="minigame-content">
+                        <h3>Alvo Mágico</h3>
+                        <p class="minigame-description">Teste sua pontaria lançando feitiços em alvos móveis.</p>
+                        <div class="minigame-stats">
+                            <div class="stat">
+                                <i class="fas fa-star"></i>
+                                <span>4.9/5</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-play-circle"></i>
+                                <span>6.1K jogos</span>
+                            </div>
+                        </div>
+                        <button class="play-game-btn" data-game="alvo">Jogar Agora</button>
+                    </div>
+                </div>
+
+                <!-- Minigame 4 -->
+                <div class="minigame-card">
+                    <div class="minigame-icon">
+                        <i class="fas fa-chess-board"></i>
+                    </div>
+                    <div class="minigame-content">
+                        <h3>Xadrez das Facções</h3>
+                        <p class="minigame-description">Jogue xadrez com peças personalizadas de cada facção.</p>
+                        <div class="minigame-stats">
+                            <div class="stat">
+                                <i class="fas fa-star"></i>
+                                <span>4.7/5</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-play-circle"></i>
+                                <span>2.9K jogos</span>
+                            </div>
+                        </div>
+                        <button class="play-game-btn" data-game="xadrez">Jogar Agora</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Desafios Section -->
+        <section id="desafios" class="tab-content">
+            <h2 class="section-title">Desafios da Semana</h2>
+            <p class="section-subtitle">Participe dos desafios especiais e ganhe recompensas exclusivas</p>
+            
+            <div class="challenges-container">
+                <div class="challenge-card featured">
+                    <div class="challenge-badge">Destaque</div>
+                    <div class="challenge-content">
+                        <h3>Desafio do Conhecimento Supremo</h3>
+                        <p class="challenge-description">Responda todos os quizzes com pontuação perfeita até o final do mês e ganhe o título "Sábio de HopeBorn".</p>
+                        <div class="challenge-progress">
+                            <div class="progress-text">
+                                <span>Progresso: 3/8 quizzes</span>
+                                <span>37%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 37%"></div>
+                            </div>
+                        </div>
+                        <div class="challenge-reward">
+                            <i class="fas fa-gem"></i>
+                            <span>Recompensa: Título Exclusivo + 5000 Gold</span>
+                        </div>
+                        <div class="challenge-time">
+                            <i class="fas fa-clock"></i>
+                            <span>Termina em: 15 dias</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="challenges-grid">
+                    <div class="challenge-card">
+                        <div class="challenge-content">
+                            <h3>Mestre da Memória</h3>
+                            <p class="challenge-description">Complete o jogo da memória em menos de 2 minutos.</p>
+                            <div class="challenge-reward">
+                                <i class="fas fa-coins"></i>
+                                <span>Recompensa: 1000 Gold</span>
+                            </div>
+                            <div class="challenge-time">
+                                <i class="fas fa-clock"></i>
+                                <span>Termina em: 7 dias</span>
+                            </div>
+                            <button class="accept-challenge-btn">Aceitar Desafio</button>
+                        </div>
+                    </div>
+
+                    <div class="challenge-card">
+                        <div class="challenge-content">
+                            <h3>Quiz Perfeito</h3>
+                            <p class="challenge-description">Zere qualquer quiz na primeira tentativa.</p>
+                            <div class="challenge-reward">
+                                <i class="fas fa-coins"></i>
+                                <span>Recompensa: 500 Gold</span>
+                            </div>
+                            <div class="challenge-time">
+                                <i class="fas fa-clock"></i>
+                                <span>Termina em: 7 dias</span>
+                            </div>
+                            <button class="accept-challenge-btn">Aceitar Desafio</button>
+                        </div>
+                    </div>
+
+                    <div class="challenge-card">
+                        <div class="challenge-content">
+                            <h3>Campeão do Xadrez</h3>
+                            <p class="challenge-description">Vença 10 partidas de xadrez consecutivas.</p>
+                            <div class="challenge-reward">
+                                <i class="fas fa-coins"></i>
+                                <span>Recompensa: 2000 Gold</span>
+                            </div>
+                            <div class="challenge-time">
+                                <i class="fas fa-clock"></i>
+                                <span>Termina em: 7 dias</span>
+                            </div>
+                            <button class="accept-challenge-btn">Aceitar Desafio</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ranking Section -->
+        <section id="ranking" class="tab-content">
+            <h2 class="section-title">Ranking dos Jogadores</h2>
+            <p class="section-subtitle">Os maiores especialistas e competidores de HopeBorn</p>
+            
+            <div class="ranking-container">
+                <div class="ranking-tabs">
+                    <button class="ranking-tab active" data-ranking="quiz">Ranking de Quiz</button>
+                    <button class="ranking-tab" data-ranking="minigames">Ranking de Minijogos</button>
+                    <button class="ranking-tab" data-ranking="desafios">Ranking de Desafios</button>
+                </div>
+
+                <div class="ranking-content">
+                    <div class="ranking-list" data-ranking="quiz">
+                        <div class="ranking-item top-1">
+                            <div class="rank-number">1</div>
+                            <div class="player-avatar">
+                                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1000&auto=format&fit=crop" alt="LoreMaster">
+                            </div>
+                            <div class="player-info">
+                                <h4>LoreMaster</h4>
+                                <p>Pontuação: 9,850</p>
+                            </div>
+                            <div class="player-stats">
+                                <span class="stat">98.5% de acerto</span>
+                                <span class="stat">42 quizzes completos</span>
+                            </div>
+                        </div>
+
+                        <div class="ranking-item top-2">
+                            <div class="rank-number">2</div>
+                            <div class="player-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=1000&auto=format&fit=crop" alt="SageOfHope">
+                            </div>
+                            <div class="player-info">
+                                <h4>SageOfHope</h4>
+                                <p>Pontuação: 9,720</p>
+                            </div>
+                            <div class="player-stats">
+                                <span class="stat">97.2% de acerto</span>
+                                <span class="stat">38 quizzes completos</span>
+                            </div>
+                        </div>
+
+                        <div class="ranking-item top-3">
+                            <div class="rank-number">3</div>
+                            <div class="player-avatar">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop" alt="KnowledgeSeeker">
+                            </div>
+                            <div class="player-info">
+                                <h4>KnowledgeSeeker</h4>
+                                <p>Pontuação: 9,650</p>
+                            </div>
+                            <div class="player-stats">
+                                <span class="stat">96.5% de acerto</span>
+                                <span class="stat">35 quizzes completos</span>
+                            </div>
+                        </div>
+
+                        <!-- More ranking items -->
+                        <div class="ranking-item">
+                            <div class="rank-number">4</div>
+                            <div class="player-info">
+                                <h4>ArcaneScholar</h4>
+                                <p>Pontuação: 9,520</p>
+                            </div>
+                        </div>
+
+                        <div class="ranking-item">
+                            <div class="rank-number">5</div>
+                            <div class="player-info">
+                                <h4>HistoryBuff</h4>
+                                <p>Pontuação: 9,480</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="quiz-modal">
+        <div class="modal-content">
+            <div class="quiz-header">
+                <h2 id="quiz-title">Quiz de HopeBorn</h2>
+                <div class="quiz-progress">
+                    <span id="current-question">1</span>/<span id="total-questions">10</span>
+                </div>
+            </div>
+            
+            <div class="quiz-body">
+                <div class="question-container">
+                    <h3 id="question-text">Qual é a capital do reino de HopeBorn?</h3>
+                </div>
+                
+                <div class="options-container">
+                    <div class="option" data-correct="false">
+                        <span class="option-letter">A</span>
+                        <span class="option-text">Cidade do Sol</span>
+                    </div>
+                    <div class="option" data-correct="true">
+                        <span class="option-letter">B</span>
+                        <span class="option-text">HopeBorn Capital</span>
+                    </div>
+                    <div class="option" data-correct="false">
+                        <span class="option-letter">C</span>
+                        <span class="option-text">Fortaleza da Luz</span>
+                    </div>
+                    <div class="option" data-correct="false">
+                        <span class="option-letter">D</span>
+                        <span class="option-text">Vila dos Heróis</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quiz-footer">
+                <button id="next-question" class="next-btn">Próxima Pergunta</button>
+                <div class="quiz-timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer">30</span>s
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>HopeBorn</h3>
+                <p>O site de entretenimento de Signs Of Hope!</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/blog/paginas.html">Blog</a></li>
+                    <li><a href="/personagens/personagens.html">Personagens</a></li>
+                    <li><a href="#">Quiz & Jogos</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Conecte-se</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2018 Signs Of Hope. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="qej.js"></script>
+</body>
+</html>

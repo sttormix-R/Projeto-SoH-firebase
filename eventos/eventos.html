@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - HopeBorn</title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="eventos.css">
+</head>
+<body>
+    <header>
+        <h1>HopeBorn</h1>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/blog/paginas.html">Blog</a></li>
+                <li><a href="/personagens/personagens.html">Personagens</a></li>
+                <li><a href="#" class="active">Eventos</a></li>
+                <li><a href="/galeria/galeria.html">Galeria</a></li>
+                <li><a href="/qEJ/qej.html">Quiz & Jogos</a></li>
+                <li><a href="/about/about.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="events-hero">
+            <div class="hero-content">
+                <h1>Calendário de Eventos</h1>
+                <p>Participe das batalhas, torneios e celebrações de HopeBorn</p>
+            </div>
+        </section>
+
+        <section class="events-filters">
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="torneio">Torneios</button>
+                <button class="filter-btn" data-filter="missao">Missões</button>
+                <button class="filter-btn" data-filter="celebração">Celebrações</button>
+                <button class="filter-btn" data-filter="especial">Eventos Especiais</button>
+                <button class="filter-btn" data-filter="rp">Roleplay</button>
+            </div>
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="grid">
+                    <i class="fas fa-th"></i>
+                </button>
+                <button class="view-btn" data-view="list">
+                    <i class="fas fa-list"></i>
+                </button>
+            </div>
+        </section>
+
+        <section class="events-container">
+            <!-- Evento 1 -->
+            <div class="event-card" data-category="torneio" data-date="2023-10-28">
+                <div class="event-header">
+                    <div class="event-date">
+                        <span class="day">28</span>
+                        <span class="month">OUT</span>
+                    </div>
+                    <div class="event-category torneio">Torneio</div>
+                </div>
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000&auto=format&fit=crop" alt="Torneio das Facções">
+                    <div class="event-status upcoming">Em Breve</div>
+                </div>
+                <div class="event-content">
+                    <h3>Torneio Anual das Facções</h3>
+                    <p class="event-time">
+                        <i class="far fa-clock"></i>
+                        19:00 - 23:00 (Brasília)
+                    </p>
+                    <p class="event-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Arena Central de HopeBorn
+                    </p>
+                    <p class="event-description">
+                        O grande torneio que define a hierarquia entre as três grandes facções. 
+                        Saligia, Tenebris Ordo e Gehenna se enfrentam em provas de força, magia e estratégia.
+                    </p>
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <span>4-6 jogadores por time</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>Prêmio: 50.000 Gold + Itens Lendários</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Níveis 80+</span>
+                        </div>
+                    </div>
+                    <div class="event-participants">
+                        <div class="participants-count">
+                            <i class="fas fa-user-friends"></i>
+                            <span>24/32 participantes</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="event-actions">
+                        <button class="btn-primary join-event">Participar</button>
+                        <button class="btn-secondary">Mais Detalhes</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evento 2 -->
+            <div class="event-card" data-category="missao" data-date="2023-10-25">
+                <div class="event-header">
+                    <div class="event-date">
+                        <span class="day">25</span>
+                        <span class="month">OUT</span>
+                    </div>
+                    <div class="event-category missao">Missão</div>
+                </div>
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000&auto=format&fit=crop" alt="Masmorra dos Sussurros">
+                    <div class="event-status upcoming">Em Breve</div>
+                </div>
+                <div class="event-content">
+                    <h3>Masmorra dos Sussurros Ancestrais</h3>
+                    <p class="event-time">
+                        <i class="far fa-clock"></i>
+                        20:00 - 23:00 (Brasília)
+                    </p>
+                    <p class="event-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Ruínas do Leste
+                    </p>
+                    <p class="event-description">
+                        Explore as ruínas ancestrais onde sussurros antigos prometem tesouros e perigos. 
+                        Uma missão cooperativa que testará sua coragem e trabalho em equipe.
+                    </p>
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <span>3-5 jogadores</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-skull"></i>
+                            <span>Dificuldade: Alta</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Níveis 60-80</span>
+                        </div>
+                    </div>
+                    <div class="event-participants">
+                        <div class="participants-count">
+                            <i class="fas fa-user-friends"></i>
+                            <span>18/20 participantes</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="event-actions">
+                        <button class="btn-primary join-event">Participar</button>
+                        <button class="btn-secondary">Mais Detalhes</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evento 3 -->
+            <div class="event-card" data-category="celebração" data-date="2023-11-02">
+                <div class="event-header">
+                    <div class="event-date">
+                        <span class="day">02</span>
+                        <span class="month">NOV</span>
+                    </div>
+                    <div class="event-category celebração">Celebração</div>
+                </div>
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1000&auto=format&fit=crop" alt="Festival da Lua">
+                    <div class="event-status upcoming">Em Breve</div>
+                </div>
+                <div class="event-content">
+                    <h3>Festival da Lua de Prata</h3>
+                    <p class="event-time">
+                        <i class="far fa-clock"></i>
+                        18:00 - 02:00 (Brasília)
+                    </p>
+                    <p class="event-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Praça Central
+                    </p>
+                    <p class="event-description">
+                        Celebre a noite mais brilhante do ano no Festival da Lua de Prata. 
+                        Minijogos, banquetes especiais e recompensas exclusivas aguardam por você.
+                    </p>
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <span>Ilimitado</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-gift"></i>
+                            <span>Recompensas Exclusivas</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Todos os níveis</span>
+                        </div>
+                    </div>
+                    <div class="event-participants">
+                        <div class="participants-count">
+                            <i class="fas fa-user-friends"></i>
+                            <span>89 participantes confirmados</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="event-actions">
+                        <button class="btn-primary join-event">Participar</button>
+                        <button class="btn-secondary">Mais Detalhes</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evento 4 -->
+            <div class="event-card" data-category="especial" data-date="2023-10-20">
+                <div class="event-header">
+                    <div class="event-date">
+                        <span class="day">20</span>
+                        <span class="month">OUT</span>
+                    </div>
+                    <div class="event-category especial">Especial</div>
+                </div>
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop" alt="Invasão Demoníaca">
+                    <div class="event-status live">Ao Vivo</div>
+                </div>
+                <div class="event-content">
+                    <h3>Invasão Demoníaca: Defesa de HopeBorn</h3>
+                    <p class="event-time">
+                        <i class="far fa-clock"></i>
+                        AGORA - 22:00 (Brasília)
+                    </p>
+                    <p class="event-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Muralhas da Cidade
+                    </p>
+                    <p class="event-description">
+                        As legiões demoníacas atacam HopeBorn! Junte-se à defesa da cidade 
+                        em um evento épico de larga escala. Recompensas especiais para heróis.
+                    </p>
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <span>50+ jogadores</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-skull"></i>
+                            <span>Dificuldade: Épica</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Níveis 70+</span>
+                        </div>
+                    </div>
+                    <div class="event-participants">
+                        <div class="participants-count">
+                            <i class="fas fa-user-friends"></i>
+                            <span>47 participantes ativos</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 94%"></div>
+                        </div>
+                    </div>
+                    <div class="event-actions">
+                        <button class="btn-primary join-event live">Entrar Agora</button>
+                        <button class="btn-secondary">Status da Batalha</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evento 5 -->
+            <div class="event-card" data-category="rp" data-date="2023-10-22">
+                <div class="event-header">
+                    <div class="event-date">
+                        <span class="day">22</span>
+                        <span class="month">OUT</span>
+                    </div>
+                    <div class="event-category rp">Roleplay</div>
+                </div>
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?q=80&w=1000&auto=format&fit=crop" alt="Noite na Taverna">
+                    <div class="event-status upcoming">Em Breve</div>
+                </div>
+                <div class="event-content">
+                    <h3>Noite de Roleplay: Contos na Taverna</h3>
+                    <p class="event-time">
+                        <i class="far fa-clock"></i>
+                        21:00 - 00:00 (Brasília)
+                    </p>
+                    <p class="event-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Taverna do Dragão Adormecido
+                    </p>
+                    <p class="event-description">
+                        Uma noite descontraída de roleplay onde jogadores compartilham histórias, 
+                        formam alianças e participam de mini-contos guiados por mestres.
+                    </p>
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <span>15-25 jogadores</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-theater-masks"></i>
+                            <span>Foco em Roleplay</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Todos os níveis</span>
+                        </div>
+                    </div>
+                    <div class="event-participants">
+                        <div class="participants-count">
+                            <i class="fas fa-user-friends"></i>
+                            <span>12/25 participantes</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 48%"></div>
+                        </div>
+                    </div>
+                    <div class="event-actions">
+                        <button class="btn-primary join-event">Participar</button>
+                        <button class="btn-secondary">Mais Detalhes</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evento 6 -->
+            <div class="event-card" data-category="torneio" data-date="2023-11-05">
+                <div class="event-header">
+                    <div class="event-date">
+                        <span class="day">05</span>
+                        <span class="month">NOV</span>
+                    </div>
+                    <div class="event-category torneio">Torneio</div>
+                </div>
+                <div class="event-image">
+                    <img src="https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1000&auto=format&fit=crop" alt="Duelo de Magos">
+                    <div class="event-status upcoming">Em Breve</div>
+                </div>
+                <div class="event-content">
+                    <h3>Grande Duelo de Magos</h3>
+                    <p class="event-time">
+                        <i class="far fa-clock"></i>
+                        17:00 - 20:00 (Brasília)
+                    </p>
+                    <p class="event-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Academia Arcana
+                    </p>
+                    <p class="event-description">
+                        Uma competição exclusiva para praticantes das artes mágicas. 
+                        Demonstre seu domínio sobre os elementos e prove que é o maior mago de HopeBorn.
+                    </p>
+                    <div class="event-details">
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <span>1x1</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-magic"></i>
+                            <span>Somente classes mágicas</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Níveis 50+</span>
+                        </div>
+                    </div>
+                    <div class="event-participants">
+                        <div class="participants-count">
+                            <i class="fas fa-user-friends"></i>
+                            <span>8/16 participantes</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="event-actions">
+                        <button class="btn-primary join-event">Participar</button>
+                        <button class="btn-secondary">Mais Detalhes</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="create-event-section">
+            <div class="create-container">
+                <h2>Propor um Evento</h2>
+                <p>Tem uma ideia para um evento incrível? Compartilhe com a comunidade!</p>
+                <button class="create-event-btn">Criar Evento</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>HopeBorn</h3>
+                <p>O site de entretenimento de Signs Of Hope!</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/blog/paginas.html">Blog</a></li>
+                    <li><a href="/personagens/personagens.html">Personagens</a></li>
+                    <li><a href="#">Eventos</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Conecte-se</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2018 Signs Of Hope. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="eventos.js"></script>
+</body>
+</html>

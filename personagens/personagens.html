@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personagens - HopeBorn</title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="personagens.css">
+</head>
+<body>
+    <header>
+        <h1>HopeBorn</h1>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/blog/paginas.html">Blog</a></li>
+                <li><a href="#" class="active">Personagens</a></li>
+                <li><a href="/eventos/eventos.html">Eventos</a></li>
+                <li><a href="/galeria/galeria.html">Galeria</a></li>
+                <li><a href="/qEJ/qej.html">Quiz & Jogos</a></li>
+                <li><a href="/about/about.html">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="characters-hero">
+            <div class="hero-content">
+                <h1>Hall dos Personagens</h1>
+                <p>Conheça os heróis, vilões e lendas de HopeBorn</p>
+            </div>
+        </section>
+
+        <section class="factions-section">
+            <h2 class="section-title">Grandes Facções</h2>
+            <div class="factions-container">
+                <div class="faction-card" data-faction="saligia">
+                    <div class="faction-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Saligia</h3>
+                    <p>Os Sete Pecados Capitais personificados</p>
+                    <span class="faction-count">7 Membros Principais</span>
+                </div>
+                <div class="faction-card" data-faction="tenebris">
+                    <div class="faction-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Tenebris Ordo</h3>
+                    <p>Ordem das Sombras e Segredos</p>
+                    <span class="faction-count">5 Membros Principais</span>
+                </div>
+                <div class="faction-card" data-faction="gehenna">
+                    <div class="faction-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Gehenna</h3>
+                    <p>Reino Infernal e suas Legiões</p>
+                    <span class="faction-count">8 Membros Principais</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="characters-grid-section">
+            <div class="characters-header">
+                <h2 class="section-title">Personagens em Destaque</h2>
+                <div class="search-box">
+                    <input type="text" id="character-search" placeholder="Buscar personagem...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+
+            <div class="characters-grid">
+                <!-- Krioni -->
+                <div class="character-profile" data-faction="saligia">
+                    <div class="profile-header">
+                        <div class="character-avatar">
+                            <img src="https://images.unsplash.com/photo-1635830625698-3b9bd74671ca?q=80&w=1000&auto=format&fit=crop" alt="Krioni">
+                            <div class="faction-badge saligia">S</div>
+                        </div>
+                        <div class="character-basic-info">
+                            <h3>Krioni</h3>
+                            <p class="character-title">O Mago do Orgulho</p>
+                            <div class="character-level">Nível 95</div>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-row">
+                            <span>HP</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 92%"></div>
+                            </div>
+                            <span>9200/10000</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>MP</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill mp" style="width: 100%"></div>
+                            </div>
+                            <span>15000/15000</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Força</span>
+                            <span class="stat-value">85</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Magia</span>
+                            <span class="stat-value">99</span>
+                        </div>
+                    </div>
+                    <div class="profile-bio">
+                        <p>"Espero que entendam que vocês não são fracos, longe disso. <strong>Eu</strong> é que sou forte demais."</p>
+                        <div class="bio-details">
+                            <p><strong>Facção:</strong> Saligia</p>
+                            <p><strong>Especialidade:</strong> Magia do Orgulho</p>
+                            <p><strong>Alinhamento:</strong> Caótico Neutro</p>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn-primary">Ver Ficha Completa</button>
+                        <button class="btn-secondary">História</button>
+                    </div>
+                </div>
+
+                <!-- Ren -->
+                <div class="character-profile" data-faction="tenebris">
+                    <div class="profile-header">
+                        <div class="character-avatar">
+                            <img src="https://images.unsplash.com/photo-1583324113626-70df0f4dea75?q=80&w=1000&auto=format&fit=crop" alt="Ren">
+                            <div class="faction-badge tenebris">T</div>
+                        </div>
+                        <div class="character-basic-info">
+                            <h3>Ren</h3>
+                            <p class="character-title">Lâmina Florida</p>
+                            <div class="character-level">Nível 88</div>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-row">
+                            <span>HP</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 88%"></div>
+                            </div>
+                            <span>8800/10000</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>MP</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill mp" style="width: 75%"></div>
+                            </div>
+                            <span>7500/10000</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Força</span>
+                            <span class="stat-value">92</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Agilidade</span>
+                            <span class="stat-value">95</span>
+                        </div>
+                    </div>
+                    <div class="profile-bio">
+                        <p>"As pessoas recebem flores minhas por dois motivos. E quase sempre é por amor, mas você... Será pela <strong>morte</strong>."</p>
+                        <div class="bio-details">
+                            <p><strong>Facção:</strong> Tenebris Ordo</p>
+                            <p><strong>Especialidade:</strong> Espadas Duplas</p>
+                            <p><strong>Alinhamento:</strong> Neutro</p>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn-primary">Ver Ficha Completa</button>
+                        <button class="btn-secondary">História</button>
+                    </div>
+                </div>
+
+                <!-- Morwen -->
+                <div class="character-profile" data-faction="gehenna">
+                    <div class="profile-header">
+                        <div class="character-avatar">
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1000&auto=format&fit=crop" alt="Morwen">
+                            <div class="faction-badge gehenna">G</div>
+                        </div>
+                        <div class="character-basic-info">
+                            <h3>Morwen Satanael</h3>
+                            <p class="character-title">"Miss" Satanael</p>
+                            <div class="character-level">Nível 90</div>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-row">
+                            <span>HP</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 85%"></div>
+                            </div>
+                            <span>8500/10000</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>MP</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill mp" style="width: 95%"></div>
+                            </div>
+                            <span>14250/15000</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Força</span>
+                            <span class="stat-value">78</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Magia</span>
+                            <span class="stat-value">96</span>
+                        </div>
+                    </div>
+                    <div class="profile-bio">
+                        <p>"Parem de mentir para mim! O Nier é meu e <strong>só</strong> meu, aquela megera da Camille é a destruidora de lares!"</p>
+                        <div class="bio-details">
+                            <p><strong>Facção:</strong> Gehenna</p>
+                            <p><strong>Especialidade:</strong> Magia de Fogo</p>
+                            <p><strong>Alinhamento:</strong> Caótico do Mal</p>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn-primary">Ver Ficha Completa</button>
+                        <button class="btn-secondary">História</button>
+                    </div>
+                </div>
+
+                <!-- Nier -->
+                <div class="character-profile" data-faction="gehenna">
+                    <div class="profile-header">
+                        <div class="character-avatar">
+                            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000&auto=format&fit=crop" alt="Nier">
+                            <div class="faction-badge gehenna">G</div>
+                        </div>
+                        <div class="character-basic-info">
+                            <h3>Nier</h3>
+                            <p class="character-title">O Imperturbável</p>
+                            <div class="character-level">Nível 93</div>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-row">
+                            <span>HP</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 96%"></div>
+                            </div>
+                            <span>14400/15000</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>MP</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill mp" style="width: 80%"></div>
+                            </div>
+                            <span>8000/10000</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Força</span>
+                            <span class="stat-value">94</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Defesa</span>
+                            <span class="stat-value">98</span>
+                        </div>
+                    </div>
+                    <div class="profile-bio">
+                        <p>"O silêncio é minha única resposta para conflitos infantis. Mas cruze meus limites, e descubra por que me temem."</p>
+                        <div class="bio-details">
+                            <p><strong>Facção:</strong> Gehenna</p>
+                            <p><strong>Especialidade:</strong> Defesa Absoluta</p>
+                            <p><strong>Alinhamento:</strong> Leal Neutro</p>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn-primary">Ver Ficha Completa</button>
+                        <button class="btn-secondary">História</button>
+                    </div>
+                </div>
+
+                <!-- Camille -->
+                <div class="character-profile" data-faction="tenebris">
+                    <div class="profile-header">
+                        <div class="character-avatar">
+                            <img src="https://images.unsplash.com/photo-1574269909862-7e1d70bb8078?q=80&w=1000&auto=format&fit=crop" alt="Camille">
+                            <div class="faction-badge tenebris">T</div>
+                        </div>
+                        <div class="character-basic-info">
+                            <h3>Camille</h3>
+                            <p class="character-title">A Tecelã de Sombras</p>
+                            <div class="character-level">Nível 87</div>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-row">
+                            <span>HP</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 82%"></div>
+                            </div>
+                            <span>8200/10000</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>MP</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill mp" style="width: 90%"></div>
+                            </div>
+                            <span>9000/10000</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Agilidade</span>
+                            <span class="stat-value">97</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Furtividade</span>
+                            <span class="stat-value">99</span>
+                        </div>
+                    </div>
+                    <div class="profile-bio">
+                        <p>"Destruidora de lares? Eu apenas colho o que outros plantam. A fraqueza emocional é a verdadeira destruidora."</p>
+                        <div class="bio-details">
+                            <p><strong>Facção:</strong> Tenebris Ordo</p>
+                            <p><strong>Especialidade:</strong> Assassinato</p>
+                            <p><strong>Alinhamento:</strong> Neutro do Mal</p>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn-primary">Ver Ficha Completa</button>
+                        <button class="btn-secondary">História</button>
+                    </div>
+                </div>
+
+                <!-- Lazarus -->
+                <div class="character-profile" data-faction="saligia">
+                    <div class="profile-header">
+                        <div class="character-avatar">
+                            <img src="https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1000&auto=format&fit=crop" alt="Lazarus">
+                            <div class="faction-badge saligia">S</div>
+                        </div>
+                        <div class="character-basic-info">
+                            <h3>Lazarus</h3>
+                            <p class="character-title">A Inveja Personificada</p>
+                            <div class="character-level">Nível 89</div>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-row">
+                            <span>HP</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 78%"></div>
+                            </div>
+                            <span>7800/10000</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>MP</span>
+                            <div class="stat-bar">
+                                <div class="stat-fill mp" style="width: 88%"></div>
+                            </div>
+                            <span>8800/10000</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Inteligência</span>
+                            <span class="stat-value">95</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Manipulação</span>
+                            <span class="stat-value">98</span>
+                        </div>
+                    </div>
+                    <div class="profile-bio">
+                        <p>"Por que eles têm o que eu mereço? Não se preocupe... em breve, tudo que é deles será meu. Tudo sempre foi meu por direito."</p>
+                        <div class="bio-details">
+                            <p><strong>Facção:</strong> Saligia</p>
+                            <p><strong>Especialidade:</strong> Manipulação Mental</p>
+                            <p><strong>Alinhamento:</strong> Caótico do Mal</p>
+                        </div>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn-primary">Ver Ficha Completa</button>
+                        <button class="btn-secondary">História</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="load-more-container">
+                <button class="load-more-btn">Carregar Mais Personagens</button>
+            </div>
+        </section>
+
+        <section class="create-character-section">
+            <div class="create-container">
+                <h2>Criar Novo Personagem</h2>
+                <p>Junte-se às facções e crie sua própria lenda em HopeBorn</p>
+                <button class="create-character-btn">Iniciar Criação</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>HopeBorn</h3>
+                <p>O site de entretenimento de Signs Of Hope!</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/blog/paginas.html">Blog</a></li>
+                    <li><a href="#">Personagens</a></li>
+                    <li><a href="/eventos/eventos.html">Eventos</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Conecte-se</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2018 Signs Of Hope. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="personagens.js"></script>
+</body>
+</html>

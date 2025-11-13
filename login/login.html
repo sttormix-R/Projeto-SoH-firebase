@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HopeBorn - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body class="login-page">
+    <main class="login-wrap">
+        <div class="login-card">
+            <div class="brand">
+                <div class="brand-title">HopeBorn</div>
+                <div class="brand-sub">Signs of Hope</div>
+            </div>
+            <form id="loginForm" autocomplete="off" novalidate>
+                <label for="char">Nome do personagem</label>
+                <input id="char" type="text" placeholder="Nome do seu Personagem" required autofocus>
+                <label for="pass">Senha</label>
+                <input id="pass" type="password" placeholder="Sua Senha" required>
+                <div class="login-row">
+                    <button type="submit" class="btn-primary large">Entrar</button>
+                </div>
+                <div class="login-hint">Use as credenciais do fórum.</div>
+            </form>
+            <div class="footer-links">
+                <a href="#" id="demo-tour">Entrar como convidado</a>
+            </div>
+        </div>
+    </main>
+    <div id="toasts" class="toasts" aria-live="polite"></div>
+    <script src="login.js"></script>
+</body>
+</html>

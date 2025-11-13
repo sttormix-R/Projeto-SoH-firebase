@@ -1,0 +1,662 @@
+:root{
+    --near-black-1:#1a1c1e;
+    --near-black-2:#121416;
+    --wine:#6b0d1a;
+    --deep-wine:#5a0a16;
+    --gold:#c49a32;
+    --muted:#bfa98d;
+    --brown:#8b4513;
+    --shadow-lg:0 1.2rem 5rem rgba(0,0,0,0.7);
+    --radius:1.2rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    background:var(--near-black-1);
+    color:var(--muted);
+    margin:0;
+    padding:0;
+    font-size:1rem;
+    line-height: 1.6;
+}
+
+header{
+    background:linear-gradient(to right,var(--near-black-2),var(--near-black-1));
+    padding:1.25rem 1rem;
+    text-align:center;
+    border-bottom:0.3rem solid var(--brown);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+h1{
+    font-family:MedievalSharp, serif;
+    font-size:2.5rem;
+    margin:0;
+    color:var(--gold);
+}
+
+nav ul{
+    list-style:none;
+    padding:0;
+    margin:0.5rem 0 0 0;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:1.25rem;
+}
+
+nav li a{
+    text-decoration:none;
+    color:var(--muted);
+    font-size:1.125rem;
+    font-weight:600;
+    transition:color 0.3s;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+nav li a:hover, nav li a.active{
+    color:var(--gold);
+    background-color: rgba(196, 154, 50, 0.1);
+}
+
+/* Gallery Hero */
+.gallery-hero {
+    background: linear-gradient(135deg, rgba(107, 13, 26, 0.8), rgba(90, 10, 22, 0.9)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 2rem;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+/* Gallery Filters */
+.gallery-filters {
+    background: var(--near-black-2);
+    padding: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 2px solid var(--wine);
+    color: var(--muted);
+    padding: 0.7rem 1.5rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: var(--wine);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.sort-options select {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--muted);
+    padding: 0.7rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.gallery-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.gallery-item:hover .gallery-image img {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.gallery-item:hover .image-overlay {
+    opacity: 1;
+}
+
+.image-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.like-btn, .view-btn, .download-btn {
+    background: rgba(255,255,255,0.9);
+    border: none;
+    padding: 0.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+}
+
+.like-btn:hover {
+    background: #e74c3c;
+    color: white;
+    transform: scale(1.1);
+}
+
+.view-btn:hover {
+    background: var(--gold);
+    color: white;
+    transform: scale(1.1);
+}
+
+.download-btn:hover {
+    background: #2ecc71;
+    color: white;
+    transform: scale(1.1);
+}
+
+.like-btn span {
+    margin-left: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.gallery-info {
+    padding: 1.5rem;
+}
+
+.gallery-info h3 {
+    font-family: MedievalSharp, serif;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+    line-height: 1.3;
+}
+
+.image-author {
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.image-author strong {
+    color: var(--gold);
+}
+
+.image-description {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.image-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background: rgba(196, 154, 50, 0.1);
+    color: var(--gold);
+    padding: 0.3rem 0.8rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Load More Section */
+.load-more-section {
+    text-align: center;
+    padding: 2rem;
+}
+
+.load-more-btn {
+    background: transparent;
+    border: 2px solid var(--wine);
+    color: var(--muted);
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.load-more-btn:hover {
+    background: var(--wine);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Upload Section */
+.upload-section {
+    background: var(--near-black-2);
+    padding: 4rem 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.upload-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.upload-container h2 {
+    font-family: MedievalSharp, serif;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-size: 2.2rem;
+}
+
+.upload-container p {
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.upload-zone {
+    border: 2px dashed var(--gold);
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.upload-zone:hover {
+    border-color: var(--wine);
+    background: rgba(255,255,255,0.02);
+}
+
+.upload-zone i {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.upload-zone p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.upload-btn {
+    background: var(--wine);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.upload-btn:hover {
+    background: var(--deep-wine);
+    transform: translateY(-2px);
+}
+
+/* Image Modal */
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+.image-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--near-black-2);
+    border-radius: var(--radius);
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    animation: scaleIn 0.3s ease;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+    background: rgba(0,0,0,0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.close-modal:hover {
+    background: var(--wine);
+}
+
+.modal-image-container {
+    flex: 2;
+    min-width: 0;
+}
+
+.modal-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-height: 70vh;
+}
+
+.modal-info {
+    flex: 1;
+    min-width: 300px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.modal-info h3 {
+    font-family: MedievalSharp, serif;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.modal-info p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-like-btn, .modal-download-btn {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.modal-like-btn {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.modal-like-btn:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: var(--gold);
+}
+
+.modal-like-btn.liked {
+    background: #e74c3c;
+    color: white;
+    border-color: #e74c3c;
+}
+
+.modal-download-btn {
+    background: var(--wine);
+    color: white;
+}
+
+.modal-download-btn:hover {
+    background: var(--deep-wine);
+}
+
+/* Footer */
+footer {
+    background: var(--near-black-2);
+    border-top: 0.2rem solid var(--brown);
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    font-family: MedievalSharp, serif;
+    color: var(--gold);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-section ul li a {
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: var(--gold);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(196, 154, 50, 0.1);
+    color: var(--muted);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--gold);
+    color: var(--near-black-2);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .gallery-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-container {
+        justify-content: center;
+    }
+    
+    .sort-options {
+        align-self: center;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem;
+    }
+    
+    .modal-content {
+        flex-direction: column;
+        max-width: 95%;
+        max-height: 95%;
+    }
+    
+    .modal-image-container {
+        flex: 1;
+        max-height: 50vh;
+    }
+    
+    .modal-info {
+        min-width: auto;
+    }
+    
+    .upload-zone {
+        padding: 2rem 1rem;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+    }
+    
+    nav ul {
+        gap: 0.5rem;
+    }
+    
+    nav li a {
+        padding: 0.3rem 0.7rem;
+        font-size: 1rem;
+    }
+}
