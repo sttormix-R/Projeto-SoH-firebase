@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Xadrez Profissional — Player vs Bot</title>
+  <link rel="stylesheet" href="xadrez.css">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Xadrez Profissional</h1>
+      <p class="subtitle">IA local com Minimax + Alpha-Beta + Tabela de Transposição</p>
+    </header>
+
+    <section class="game-area">
+      <div id="board" class="board" aria-label="Tabuleiro de xadrez"></div>
+
+      <aside class="panel">
+        <div class="controls card">
+          <div><strong id="status">Carregando...</strong></div>
+          <div class="row">
+            <button id="newGame">Novo jogo</button>
+            <button id="undo">Desfazer</button>
+          </div>
+
+          <label class="row"><span>Nível IA (profundidade)</span>
+            <input id="depth" type="range" min="1" max="6" value="4">
+            <output id="depthVal">4</output>
+          </label>
+
+          <label class="row"><span>Tempo máximo (ms)</span>
+            <input id="timeLimit" type="number" min="50" max="5000" value="1000" step="50">
+          </label>
+
+          <label class="row"><input id="autoPlay" type="checkbox" checked> Bot joga com as pretas</label>
+          
+          <div class="row">
+            <button id="flipBoard">Virar tabuleiro</button>
+          </div>
+        </div>
+
+        <!-- Nova seção de promoção -->
+        <div id="promotionDialog" class="promotion-dialog card" style="display:none">
+          <h4>Escolha promoção:</h4>
+          <div class="promotion-options">
+            <button data-piece="q">♛ Dama</button>
+            <button data-piece="r">♜ Torre</button>
+            <button data-piece="b">♝ Bispo</button>
+            <button data-piece="n">♞ Cavalo</button>
+          </div>
+        </div>
+
+        <div class="card history">
+          <h3>Histórico</h3>
+          <ol id="moveList"></ol>
+        </div>
+
+        <div class="card info">
+          <h4>Dicas & Estatísticas</h4>
+          <div id="stats">
+            <div>Tempo IA: <span id="thinkTime">-</span>ms</div>
+            <div>Nós avaliados: <span id="nodesEvaluated">-</span></div>
+          </div>
+          <ul>
+            <li>Clique ou arraste peças</li>
+            <li>Promoção interativa disponível</li>
+            <li>IA usa tabela de transposição para cache</li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <small>Motor de xadrez otimizado — avaliação: material + tabelas de peças + mobilidade</small>
+    </footer>
+  </main>
+
+  <script src="xadrez.js"></script>
+</body>
+</html>
